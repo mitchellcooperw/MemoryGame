@@ -58,34 +58,42 @@ deck.addEventListener('click', function(event){
 })
 
 // if the list already has another card, check to see if the two cards match
-// if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
 function compareCards(compareArray,eventArray) {
     console.log(shownCardsHTML[0] === shownCardsHTML[1]);
 
-    let i = 0
+    let i = 0;
 
     while(i < 2) {
         if(shownCardsHTML[0] === shownCardsHTML[1]) {
-            eventArray[i].classList.toggle('match');
+            matchCards(eventArray,i);
         } else {
-            eventArray[i].classList.toggle('show');
-            eventArray[i].classList.toggle('open');
+            hideCards(eventArray,i);
         };
+        
         i++;
     };
 
     shownCardCount = 0;
 }
 
-function hideCards(eventArray) {
-    
-}
+// if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
+function matchCards(event,idx) {
+    event[idx].classList.toggle('match');
+    event[idx].classList.toggle('animated');
+    event[idx].classList.toggle('bounce');
+};
+
+// if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
+function hideCards(event,idx) {
+    event[idx].classList.toggle('show');
+    event[idx].classList.toggle('open');
+    event[idx].classList.toggle('animated');
+    event[idx].classList.toggle('shake');
+};
 
 
 
 /*
-
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
