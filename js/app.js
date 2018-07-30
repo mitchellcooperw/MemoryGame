@@ -41,21 +41,21 @@ deck.addEventListener('click', function(event){
         clicked.classList.toggle('open');
 
 // track number of clicked cards to avoid too many shown
-    shownCardCount++;
-    // console.log(shownCardCount);
+        shownCardCount++;
+        // console.log(shownCardCount);
 
 // add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
-    shownCardsHTML.push(clicked.innerHTML);
-    console.log(shownCardsHTML);
+        shownCardsHTML.push(clicked.innerHTML);
+        console.log(shownCardsHTML);
 
-    cardNodes.push(clicked);
-    console.log(cardNodes);
+        cardNodes.push(clicked);
+        console.log(cardNodes);
 
-    if(cardNodes.length === 2) {
-        compareCards(shownCardsHTML,cardNodes);
+        if(cardNodes.length === 2) {
+            compareCards(shownCardsHTML,cardNodes);
+        };
     }
-    }
-})
+});
 
 // if the list already has another card, check to see if the two cards match
 function compareCards(compareArray,eventArray) {
@@ -65,15 +65,17 @@ function compareCards(compareArray,eventArray) {
 
     while(i < 2) {
         if(shownCardsHTML[0] === shownCardsHTML[1]) {
+            console.log('1');
             matchCards(eventArray,i);
         } else {
+            console.log('2');
             hideCards(eventArray,i);
         };
-        
+
         i++;
     };
 
-    shownCardCount = 0;
+    compareReset();
 }
 
 // if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
@@ -85,10 +87,16 @@ function matchCards(event,idx) {
 
 // if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
 function hideCards(event,idx) {
-    event[idx].classList.toggle('show');
-    event[idx].classList.toggle('open');
     event[idx].classList.toggle('animated');
     event[idx].classList.toggle('shake');
+    event[idx].classList.toggle('show');
+    event[idx].classList.toggle('open');
+};
+
+function compareReset() {
+    shownCardCount = 0;
+    shownCardsHTML = [];
+    cardNodes = [];
 };
 
 
