@@ -37,8 +37,7 @@ deck.addEventListener('click', function(event){
 
 // display the card's symbol (put this functionality in another function that you call from this one)
     if(clicked.classList.contains('card') && shownCardCount < 2) {
-        clicked.classList.toggle('show');
-        clicked.classList.toggle('open');
+        toggleClicked(clicked);
 
 // track number of clicked cards to avoid too many shown
         shownCardCount++;
@@ -57,6 +56,11 @@ deck.addEventListener('click', function(event){
     }
 });
 
+function toggleClicked(event) {
+    clicked.classList.toggle('show');
+    clicked.classList.toggle('open');
+}
+
 // if the list already has another card, check to see if the two cards match
 function compareCards(compareArray,eventArray) {
     console.log(shownCardsHTML[0] === shownCardsHTML[1]);
@@ -69,7 +73,9 @@ function compareCards(compareArray,eventArray) {
         hideCards(eventArray);
     };
 
-    compareReset();
+    shownCardCount = 0;
+    shownCardsHTML = [];
+    cardNodes = [];
 }
 
 // if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
@@ -90,13 +96,6 @@ function hideCards(events) {
         events[i].classList.toggle('open');
     };
 };
-
-function compareReset() {
-    shownCardCount = 0;
-    shownCardsHTML = [];
-    cardNodes = [];
-};
-
 
 
 /*
