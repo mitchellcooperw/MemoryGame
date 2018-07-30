@@ -57,8 +57,8 @@ deck.addEventListener('click', function(event){
 });
 
 function toggleClicked(event) {
-    clicked.classList.toggle('show');
-    clicked.classList.toggle('open');
+    event.classList.toggle('show');
+    event.classList.toggle('open');
 }
 
 // if the list already has another card, check to see if the two cards match
@@ -89,12 +89,11 @@ function matchCards(events) {
 
 // if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
 function hideCards(events) {
-    for(let i = 0; i < 2; i++) {
-        events[i].classList.toggle('animated');
-        events[i].classList.toggle('shake');
-        events[i].classList.toggle('show');
-        events[i].classList.toggle('open');
-    };
+    // events[i].classList.toggle('animated');
+    // events[i].classList.toggle('shake');
+    
+    toggleClicked(events[0]);
+    toggleClicked(events[1]);
 };
 
 
