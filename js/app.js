@@ -69,8 +69,6 @@ function compareCards(compareArray,eventArray) {
         hideCards(eventArray);
     };
 
-        i++;
-
     compareReset();
 }
 
@@ -88,7 +86,7 @@ function hideCards(events) {
     for(let i = 0; i < 2; i++) {
         events[i].classList.toggle('animated');
         events[i].classList.toggle('shake');
-        evenst[i].classList.toggle('show');
+        events[i].classList.toggle('show');
         events[i].classList.toggle('open');
     };
 };
