@@ -50,22 +50,38 @@ deck.addEventListener('click', function(event){
 
     cardNodes.push(clicked);
     console.log(cardNodes);
+
+    if(cardNodes.length === 2) {
+        compareCards(shownCardsHTML,cardNodes);
+    }
     }
 })
 
 // if the list already has another card, check to see if the two cards match
 // if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
-function compareCards(array,event) {
+function compareCards(compareArray,eventArray) {
     console.log(shownCardsHTML[0] === shownCardsHTML[1]);
 
-    if(shownCardsHTML[0] === shownCardsHTML[1]) {
-        let i = 0
-        while(i < 2) {
-            event[i].classList.toggle('match');
-            console.log(event[i]);
+    let i = 0
+
+    while(i < 2) {
+        if(shownCardsHTML[0] === shownCardsHTML[1]) {
+            eventArray[i].classList.toggle('match');
+        } else {
+            eventArray[i].classList.toggle('show');
+            eventArray[i].classList.toggle('open');
         };
-    }
+        i++;
+    };
+
+    shownCardCount = 0;
 }
+
+function hideCards(eventArray) {
+    
+}
+
+
 
 /*
 
