@@ -71,9 +71,7 @@ function compareCards(compareArray,eventArray) {
         matchCards(eventArray);
     } else {
         console.log('2');
-        setTimeout(function() {
-            hideCards(eventArray)
-        }, 500);
+        hideCards(eventArray)
     };
 
     shownCardCount = 0;
@@ -91,10 +89,13 @@ function matchCards(events) {
 
 // if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
 function hideCards(events) {
-    // events[i].classList.toggle('shake');
-    
-    toggleClicked(events[0]);
-    toggleClicked(events[1]);
+    events[0].classList.toggle('shake');
+    events[1].classList.toggle('shake');
+
+    setTimeout(function() {
+        toggleClicked(events[0]);
+        toggleClicked(events[1]);
+    }, 500);
 };
 
 
