@@ -59,6 +59,7 @@ deck.addEventListener('click', function(event){
 function toggleClicked(event) {
     event.classList.toggle('show');
     event.classList.toggle('open');
+    event.classList.toggle('animated');
 }
 
 // if the list already has another card, check to see if the two cards match
@@ -70,7 +71,9 @@ function compareCards(compareArray,eventArray) {
         matchCards(eventArray);
     } else {
         console.log('2');
-        hideCards(eventArray);
+        setTimeout(function() {
+            hideCards(eventArray)
+        }, 500);
     };
 
     shownCardCount = 0;
@@ -82,14 +85,12 @@ function compareCards(compareArray,eventArray) {
 function matchCards(events) {
     for(let i = 0; i < 2; i++) {
         events[i].classList.toggle('match');
-        events[i].classList.toggle('animated');
         events[i].classList.toggle('bounce');
     };
 };
 
 // if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
 function hideCards(events) {
-    // events[i].classList.toggle('animated');
     // events[i].classList.toggle('shake');
     
     toggleClicked(events[0]);
