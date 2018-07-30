@@ -33,7 +33,7 @@ function shuffle(array) {
 // set up the event listener for a card. If a card is clicked:
 deck.addEventListener('click', function(event){
     const clicked = event.target;
-    console.log(clicked);
+    // console.log(clicked);
 
 // display the card's symbol (put this functionality in another function that you call from this one)
     if(clicked.classList.contains('card') && shownCardCount < 2) {
@@ -46,10 +46,10 @@ deck.addEventListener('click', function(event){
 
 // add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
         shownCardsHTML.push(clicked.innerHTML);
-        console.log(shownCardsHTML);
+        // console.log(shownCardsHTML);
 
         cardNodes.push(clicked);
-        console.log(cardNodes);
+        // console.log(cardNodes);
 
         if(cardNodes.length === 2) {
             compareCards(shownCardsHTML,cardNodes);
@@ -61,36 +61,36 @@ deck.addEventListener('click', function(event){
 function compareCards(compareArray,eventArray) {
     console.log(shownCardsHTML[0] === shownCardsHTML[1]);
 
-    let i = 0;
-
-    while(i < 2) {
-        if(shownCardsHTML[0] === shownCardsHTML[1]) {
-            console.log('1');
-            matchCards(eventArray,i);
-        } else {
-            console.log('2');
-            hideCards(eventArray,i);
-        };
+    if(shownCardsHTML[0] === shownCardsHTML[1]) {
+        console.log('1');
+        matchCards(eventArray);
+    } else {
+        console.log('2');
+        hideCards(eventArray);
+    };
 
         i++;
-    };
 
     compareReset();
 }
 
 // if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
-function matchCards(event,idx) {
-    event[idx].classList.toggle('match');
-    event[idx].classList.toggle('animated');
-    event[idx].classList.toggle('bounce');
+function matchCards(events) {
+    for(let i = 0; i < 2; i++) {
+        events[i].classList.toggle('match');
+        events[i].classList.toggle('animated');
+        events[i].classList.toggle('bounce');
+    };
 };
 
 // if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
-function hideCards(event,idx) {
-    event[idx].classList.toggle('animated');
-    event[idx].classList.toggle('shake');
-    event[idx].classList.toggle('show');
-    event[idx].classList.toggle('open');
+function hideCards(events) {
+    for(let i = 0; i < 2; i++) {
+        events[i].classList.toggle('animated');
+        events[i].classList.toggle('shake');
+        evenst[i].classList.toggle('show');
+        events[i].classList.toggle('open');
+    };
 };
 
 function compareReset() {
