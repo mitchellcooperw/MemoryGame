@@ -5,13 +5,12 @@
  */
 const deck = document.querySelector('.deck');
 const moves = document.querySelector('.moves');
+const restart = document.querySelector('restart');
 
 let shownCardCount = 0;
 let shownCardsHTML = [];
 let cardNodes = [];
-let totalMoves = 0;
-
-moves.innerHTML = 0;
+let totalMoves = 1;
 
 /*
  * Display the cards on the page
@@ -41,7 +40,7 @@ deck.addEventListener('click', function(event){
     // console.log(clicked);
 
 // display the card's symbol (put this functionality in another function that you call from this one)
-    if(clicked.classList.contains('card') && shownCardCount < 2) {
+    if(clicked.classList.contains('card') && shownCardCount < 2 && !clicked.classList.contains('match')) {
         toggleClicked(clicked);
 
 // track number of clicked cards to avoid too many shown
@@ -82,8 +81,8 @@ function compareCards(compareArray,eventArray) {
     shownCardCount = 0;
     shownCardsHTML = [];
     cardNodes = [];
-    totalMoves++;
-    moves.innerHTML = totalMoves;
+    // totalMoves++;
+    moves.innerHTML = totalMoves++;
 
 }
 
