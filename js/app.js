@@ -4,9 +4,14 @@
  * create array to hold clicked card html for comparison
  */
 const deck = document.querySelector('.deck');
-let shownCardCount = 0
-let shownCardsHTML = []
-let cardNodes = []
+const moves = document.querySelector('.moves');
+
+let shownCardCount = 0;
+let shownCardsHTML = [];
+let cardNodes = [];
+let totalMoves = 0;
+
+moves.innerHTML = 0;
 
 /*
  * Display the cards on the page
@@ -77,6 +82,9 @@ function compareCards(compareArray,eventArray) {
     shownCardCount = 0;
     shownCardsHTML = [];
     cardNodes = [];
+    totalMoves++;
+    moves.innerHTML = totalMoves;
+
 }
 
 // if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
