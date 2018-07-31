@@ -95,6 +95,8 @@ function hideCards(events) {
     setTimeout(function() {
         toggleClicked(events[0]);
         toggleClicked(events[1]);
+        events[0].classList.toggle('shake');
+        events[1].classList.toggle('shake');
     }, 500);
 };
 
