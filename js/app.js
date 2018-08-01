@@ -6,6 +6,7 @@
 const deck = document.querySelector('.deck');
 const moves = document.querySelector('.moves');
 const restart = document.querySelector('restart');
+const score = document.querySelector('.stars');
 
 let shownCardCount = 0;
 let shownCardsHTML = [];
@@ -57,34 +58,14 @@ deck.addEventListener('click', function(event){
         if(cardNodes.length === 2) {
             compareCards(shownCardsHTML,cardNodes);
         };
-    }
+    };
 });
 
 function toggleClicked(event) {
     event.classList.toggle('show');
     event.classList.toggle('open');
     event.classList.toggle('animated');
-}
-
-// if the list already has another card, check to see if the two cards match
-function compareCards(compareArray,eventArray) {
-    console.log(shownCardsHTML[0] === shownCardsHTML[1]);
-
-    if(shownCardsHTML[0] === shownCardsHTML[1]) {
-        console.log('1');
-        matchCards(eventArray);
-    } else {
-        console.log('2');
-        hideCards(eventArray)
-    };
-
-    shownCardCount = 0;
-    shownCardsHTML = [];
-    cardNodes = [];
-    // totalMoves++;
-    moves.innerHTML = totalMoves++;
-
-}
+};
 
 // if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
 function matchCards(events) {
@@ -107,8 +88,33 @@ function hideCards(events) {
     }, 500);
 };
 
+function updateScore() {
+    score.removeChild(score.childNodes[0]);
+};
+
+// if the list already has another card, check to see if the two cards match
+function compareCards(compareArray,eventArray) {
+    // console.log(shownCardsHTML[0] === shownCardsHTML[1]);
+
+    if(shownCardsHTML[0] === shownCardsHTML[1]) {
+        // console.log('1');
+        matchCards(eventArray);
+    } else {
+        // console.log('2');
+        hideCards(eventArray)
+    };
+
+    shownCardCount = 0;
+    shownCardsHTML = [];
+    cardNodes = [];
+
+// increment the move counter and display it on the page (put this functionality in another function that you call from this one)
+    moves.innerHTML = totalMoves++;
+    // console.log(moves.innerHTML == 1);
+}
+
+
 
 /*
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
