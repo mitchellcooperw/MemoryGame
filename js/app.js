@@ -38,7 +38,6 @@ function shuffle(array) {
 // set up the event listener for a card. If a card is clicked:
 deck.addEventListener('click', function(event){
     const clicked = event.target;
-    // console.log(clicked);
 
 // display the card's symbol (put this functionality in another function that you call from this one)
     if(clicked.classList.contains('card') && shownCardCount < 2 && !clicked.classList.contains('match')) {
@@ -46,14 +45,10 @@ deck.addEventListener('click', function(event){
 
 // track number of clicked cards to avoid too many shown
         shownCardCount++;
-        // console.log(shownCardCount);
 
 // add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
         shownCardsHTML.push(clicked.innerHTML);
-        // console.log(shownCardsHTML);
-
         cardNodes.push(clicked);
-        // console.log(cardNodes);
 
         if(cardNodes.length === 2) {
             compareCards(shownCardsHTML,cardNodes);
@@ -94,13 +89,10 @@ function updateScore() {
 
 // if the list already has another card, check to see if the two cards match
 function compareCards(compareArray,eventArray) {
-    // console.log(shownCardsHTML[0] === shownCardsHTML[1]);
 
     if(shownCardsHTML[0] === shownCardsHTML[1]) {
-        // console.log('1');
         matchCards(eventArray);
     } else {
-        // console.log('2');
         hideCards(eventArray)
     };
 
@@ -110,7 +102,6 @@ function compareCards(compareArray,eventArray) {
 
 // increment the move counter and display it on the page (put this functionality in another function that you call from this one)
     moves.innerHTML = totalMoves++;
-    // console.log(moves.innerHTML == 1);
 }
 
 
