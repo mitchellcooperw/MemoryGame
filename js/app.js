@@ -7,7 +7,6 @@ const deck = document.querySelector('.deck');
 const moves = document.querySelector('.moves');
 const restart = document.querySelector('.restart');
 
-let shownCardCount = 0;
 let shownCardsHTML = [];
 let cardNodes = [];
 let totalMoves = 1;
@@ -38,22 +37,20 @@ function shuffle(array) {
 deck.addEventListener('click', function(event) {
     const clicked = event.target;
 
-    if (totalMoves >= 8 && totalMoves % 2 === 0) {
+    if (totalMoves >= 9 && totalMoves % 2 !== 0) {
         updateScore(1);
     };
 
+// add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
+    shownCardsHTML.push(clicked.innerHTML);
+    cardNodes.push(clicked);
+
 // display the card's symbol (put this functionality in another function that you call from this one)
-    if(clicked.classList.contains('card') && shownCardCount < 2 && !clicked.classList.contains('match')) {
+    if(clicked.classList.contains('card') && cardNodes.length <= 2 && !clicked.classList.contains('match')) {
         toggleClicked(clicked);
 
-// track number of clicked cards to avoid too many shown
-        shownCardCount++;
-
-// add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
-        shownCardsHTML.push(clicked.innerHTML);
-        cardNodes.push(clicked);
-
         if(cardNodes.length === 2) {
+            updateMoveCounter(cardNodes);
             compareCards(shownCardsHTML,cardNodes);
         };
     };
@@ -108,6 +105,16 @@ function hideCards(events) {
     }, 500);
 };
 
+// increment the move counter and display it on the page (put this functionality in another function that you call from this one)
+function updateMoveCounter(array) {
+    let cardOne = array[0].className;
+    let cardTwo = array[1].className;
+
+    if(!(cardOne === cardTwo)) {
+        moves.innerHTML = totalMoves++;
+    }
+};
+
 function updateScore(moves) {
     let score = document.querySelector('.stars');
 
@@ -133,9 +140,6 @@ function compareCards(compareArray,eventArray) {
     shownCardCount = 0;
     shownCardsHTML = [];
     cardNodes = [];
-
-// increment the move counter and display it on the page (put this functionality in another function that you call from this one)
-    moves.innerHTML = totalMoves++;
 }
 
 
