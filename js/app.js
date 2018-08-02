@@ -5,7 +5,7 @@
  */
 const deck = document.querySelector('.deck');
 const moves = document.querySelector('.moves');
-const restart = document.querySelector('restart');
+const restart = document.querySelector('.restart');
 
 let shownCardCount = 0;
 let shownCardsHTML = [];
@@ -35,7 +35,7 @@ function shuffle(array) {
 }
 
 // set up the event listener for a card. If a card is clicked:
-deck.addEventListener('click', function(event){
+deck.addEventListener('click', function(event) {
     const clicked = event.target;
 
     if (totalMoves >= 8 && totalMoves % 2 === 0) {
@@ -58,6 +58,20 @@ deck.addEventListener('click', function(event){
         };
     };
 });
+
+restart.addEventListener('click', function(event) {
+    shuffleCards(deck);
+});
+
+function shuffleCards() {
+    const cardsNodeList = document.querySelectorAll('.card');
+    const cardsArray = Array.from(cardsNodeList);
+    const shuffled = shuffle(cardsArray);
+    
+    shuffled.forEach(function(element) {
+        deck.appendChild(element);
+    });
+};
 
 function toggleClicked(event) {
     event.classList.toggle('show');
