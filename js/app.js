@@ -39,7 +39,7 @@ deck.addEventListener('click', function(event) {
     const clicked = event.target;
 
     if (totalMoves >= 8 && totalMoves % 2 === 0) {
-        updateScore();
+        updateScore(1);
     };
 
 // display the card's symbol (put this functionality in another function that you call from this one)
@@ -69,8 +69,16 @@ function shuffleCards() {
     const shuffled = shuffle(cardsArray);
     
     shuffled.forEach(function(element) {
+        if(element.classList.contains('match')) {
+            element.className = 'card';
+        };
+
         deck.appendChild(element);
     });
+    updateScore(totalMoves);
+
+    totalMoves = 0;
+    moves.innerHTML = totalMoves;
 };
 
 function toggleClicked(event) {
@@ -100,10 +108,17 @@ function hideCards(events) {
     }, 500);
 };
 
-function updateScore() {
+function updateScore(moves) {
     let score = document.querySelector('.stars');
 
-    score.removeChild(score.childNodes[0]);
+    if(!totalMoves == 0) {
+        score.removeChild(score.childNodes[0]);
+    } else {
+        for(var i = totalMoves; i < 5; i++){
+            score.appendChild(score.childNodes[0]);
+        };
+    }
+    
 };
 
 // if the list already has another card, check to see if the two cards match
