@@ -6,7 +6,6 @@
 const deck = document.querySelector('.deck');
 const moves = document.querySelector('.moves');
 const restart = document.querySelector('restart');
-const score = document.querySelector('.stars');
 
 let shownCardCount = 0;
 let shownCardsHTML = [];
@@ -38,6 +37,10 @@ function shuffle(array) {
 // set up the event listener for a card. If a card is clicked:
 deck.addEventListener('click', function(event){
     const clicked = event.target;
+
+    if (totalMoves >= 8 && totalMoves % 2 === 0) {
+        updateScore();
+    };
 
 // display the card's symbol (put this functionality in another function that you call from this one)
     if(clicked.classList.contains('card') && shownCardCount < 2 && !clicked.classList.contains('match')) {
@@ -84,6 +87,8 @@ function hideCards(events) {
 };
 
 function updateScore() {
+    let score = document.querySelector('.stars');
+
     score.removeChild(score.childNodes[0]);
 };
 
