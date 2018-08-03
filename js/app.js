@@ -6,7 +6,7 @@
 const deck = document.querySelector('.deck');
 const moves = document.querySelector('.moves');
 const restart = document.querySelector('.restart');
-const timer = document.querySelector('timer');
+const timer = document.querySelector('.timer');
 
 let shownCardsHTML = [];
 let cardNodes = [];
@@ -62,12 +62,14 @@ deck.addEventListener('click', function(event) {
     };
 
     if(totalMatches === 2){
-        clearInterval(interval);
+        killElapsedTimer();
     };
 });
 
 restart.addEventListener('click', function(event) {
     shuffleCards(deck);
+    killElapsedTimer();
+    timer.innerHTML = '00:00';
 });
 
 function shuffleCards() {
@@ -154,25 +156,29 @@ function compareCards(compareArray,eventArray) {
     cardNodes = [];
 }
 
-function elapsedTimer() {
-    let hr = 0; 
+function elapsedTimer() { 
     let min = 0 
     let sec = 0;
 
     interval = setInterval(function(){
         sec++;
+        if(sec === 60) {
+            min++;
+            sec = 0;
+        };
+
+        if(sec < 10 ) {
+            timer.innerHTML = `${min}:0${sec}`;
+        } else {
+            timer.innerHTML = `${min}:${sec}`;
+        }
+        console.log(`${min}:0${sec}`);
     },1000);
 
-    if(sec === 60) {
-        min++;
-        sec = 0;
-    };
-
-    if(min === 60) {
-        hr++;
-        min = 0;
-    };
 };
+function killElapsedTimer() {
+    clearInterval(interval);
+}
 
 /*
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
