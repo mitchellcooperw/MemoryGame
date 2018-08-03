@@ -55,6 +55,7 @@ deck.addEventListener('click', function(event) {
         if(cardNodes.length === 2) {
             updateMoveCounter(cardNodes);
             compareCards(shownCardsHTML,cardNodes);
+
             if(totalMoves === 1) {
                 elapsedTimer();
             }
@@ -90,6 +91,7 @@ function shuffleCards() {
     moves.innerHTML = totalMoves;
 };
 
+// toggles classes when a card is clicked
 function toggleClicked(event) {
     event.classList.toggle('show');
     event.classList.toggle('open');
@@ -102,6 +104,7 @@ function matchCards(events) {
         events[i].classList.toggle('match');
         events[i].classList.toggle('bounce');
     };
+
     totalMatches++;
 };
 
@@ -129,6 +132,7 @@ function updateMoveCounter(array) {
     }
 };
 
+// updates star score
 function updateScore(moves) {
     let score = document.querySelector('.stars');
 
@@ -156,6 +160,7 @@ function compareCards(compareArray,eventArray) {
     cardNodes = [];
 }
 
+// timer to track elapsed play time
 function elapsedTimer() { 
     let min = 0 
     let sec = 0;
@@ -171,11 +176,11 @@ function elapsedTimer() {
             timer.innerHTML = `${min}:0${sec}`;
         } else {
             timer.innerHTML = `${min}:${sec}`;
-        }
-        console.log(`${min}:0${sec}`);
+        };
     },1000);
 
 };
+// kills timer
 function killElapsedTimer() {
     clearInterval(interval);
 }
