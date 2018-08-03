@@ -6,10 +6,11 @@
 const deck = document.querySelector('.deck');
 const moves = document.querySelector('.moves');
 const restart = document.querySelector('.restart');
+const timer = document.querySelector('timer');
 
 let shownCardsHTML = [];
 let cardNodes = [];
-let totalMoves = 1;
+let totalMoves = 0;
 let totalMatches = 0;
 
 
@@ -54,6 +55,11 @@ deck.addEventListener('click', function(event) {
         if(cardNodes.length === 2) {
             updateMoveCounter(cardNodes);
             compareCards(shownCardsHTML,cardNodes);
+            console.log(totalMoves);
+            if(totalMoves === 1) {
+                elapsedTimer(totalMatches);
+                console.log('start');
+            }
         };
     };
 });
@@ -114,7 +120,8 @@ function updateMoveCounter(array) {
     let cardTwo = array[1].className;
 
     if(!(cardOne === cardTwo)) {
-        moves.innerHTML = totalMoves++;
+        totalMoves++;
+        moves.innerHTML = totalMoves;
     }
 };
 
@@ -145,8 +152,30 @@ function compareCards(compareArray,eventArray) {
     cardNodes = [];
 }
 
+function elapsedTimer(triggerInt) {
+    let hr = 0; 
+    let min = 0 
+    let sec = 0;
 
+    let interval = setInterval(function(){
+        sec++;
+        console.log(sec);
+    },1000);
 
+    if(sec === 60) {
+        min++;
+        sec = 0;
+    };
+
+    if(min === 60) {
+        hr++;
+        min = 0;
+    };
+
+    if(triggerInt === 8) {
+        clearInterval(interval);
+    }
+};
 
 /*
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
