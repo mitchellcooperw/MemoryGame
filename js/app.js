@@ -12,7 +12,7 @@ let shownCardsHTML = [];
 let cardNodes = [];
 let totalMoves = 0;
 let totalMatches = 0;
-
+let interval;
 
 /*
  * Display the cards on the page
@@ -55,12 +55,14 @@ deck.addEventListener('click', function(event) {
         if(cardNodes.length === 2) {
             updateMoveCounter(cardNodes);
             compareCards(shownCardsHTML,cardNodes);
-            console.log(totalMoves);
             if(totalMoves === 1) {
-                elapsedTimer(totalMatches);
-                console.log('start');
+                elapsedTimer();
             }
         };
+    };
+
+    if(totalMatches === 2){
+        clearInterval(interval);
     };
 });
 
@@ -152,14 +154,13 @@ function compareCards(compareArray,eventArray) {
     cardNodes = [];
 }
 
-function elapsedTimer(triggerInt) {
+function elapsedTimer() {
     let hr = 0; 
     let min = 0 
     let sec = 0;
 
-    let interval = setInterval(function(){
+    interval = setInterval(function(){
         sec++;
-        console.log(sec);
     },1000);
 
     if(sec === 60) {
@@ -171,10 +172,6 @@ function elapsedTimer(triggerInt) {
         hr++;
         min = 0;
     };
-
-    if(triggerInt === 8) {
-        clearInterval(interval);
-    }
 };
 
 /*
