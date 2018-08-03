@@ -10,6 +10,8 @@ const restart = document.querySelector('.restart');
 let shownCardsHTML = [];
 let cardNodes = [];
 let totalMoves = 1;
+let totalMatches = 0;
+
 
 /*
  * Display the cards on the page
@@ -90,6 +92,7 @@ function matchCards(events) {
         events[i].classList.toggle('match');
         events[i].classList.toggle('bounce');
     };
+    totalMatches++;
 };
 
 // if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
@@ -141,6 +144,7 @@ function compareCards(compareArray,eventArray) {
     shownCardsHTML = [];
     cardNodes = [];
 }
+
 
 
 
