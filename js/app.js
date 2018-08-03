@@ -61,7 +61,7 @@ deck.addEventListener('click', function(event) {
         };
     };
 
-    if(totalMatches === 2){
+    if(totalMatches === 8){
         killElapsedTimer();
     };
 });
