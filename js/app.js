@@ -67,12 +67,16 @@ deck.addEventListener('click', function(event) {
     };
 });
 
+// listener to reset the game
 restart.addEventListener('click', function(event) {
     shuffleCards(deck);
     killElapsedTimer();
     timer.innerHTML = '00:00';
+    totalMoves = 0;
+    moves.innerHTML = totalMoves;
 });
 
+// shuffles cards
 function shuffleCards() {
     const cardsNodeList = document.querySelectorAll('.card');
     const cardsArray = Array.from(cardsNodeList);
@@ -86,9 +90,6 @@ function shuffleCards() {
         deck.appendChild(element);
     });
     updateScore(totalMoves);
-
-    totalMoves = 0;
-    moves.innerHTML = totalMoves;
 };
 
 // toggles classes when a card is clicked
