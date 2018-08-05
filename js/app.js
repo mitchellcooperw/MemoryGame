@@ -46,15 +46,15 @@ deck.addEventListener('click', function(event) {
 
             if(totalMoves === 1) {
                 elapsedTimer();
-            }
+            };
         };
     };
 
     if(totalMatches === 2){
         killElapsedTimer();
 
-        modal.style.display = 'flex';
-        popup.style.display = 'flex';
+        // if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
+        toggleModal('flex');
     };
 });
 
@@ -71,9 +71,7 @@ popupRestart.addEventListener('click', function(event) {
     shuffleCards(deck);
     killElapsedTimer();
     statReset();
-    
-    modal.style.display = 'none';
-    popup.style.display = 'none';
+    toggleModal('none');
 });
 
 // ------------------FUNCTIONS-----------------------
@@ -95,7 +93,7 @@ function shuffle(array) {
         temporaryValue = array[currentIndex];
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
-    }
+    };
 
     return array;
 }
@@ -162,7 +160,7 @@ function updateMoveCounter(array) {
     if(!(cardOne === cardTwo)) {
         totalMoves++;
         moves.innerHTML = totalMoves;
-    }
+    };
 };
 
 // updates star score
@@ -175,7 +173,7 @@ function updateScore(moves) {
         for(var i = totalMoves; i < 5; i++){
             score.appendChild(score.childNodes[0]);
         };
-    }
+    };
     
 };
 
@@ -191,7 +189,7 @@ function compareCards(compareArray,eventArray) {
     shownCardCount = 0;
     shownCardsHTML = [];
     cardNodes = [];
-}
+};
 
 // timer to track elapsed play time
 function elapsedTimer() { 
@@ -216,13 +214,16 @@ function timerDisplay(element) {
     } else {
         element.innerHTML = `${min}:${sec}`;
     };
-}
+};
 
 // kills timer
 function killElapsedTimer() {
     clearInterval(interval);
-}
+};
 
-/*
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
+// toggles modal/popup
+
+function toggleModal(displayString) {
+    modal.style.display = displayString;
+    popup.style.display = displayString;
+};
