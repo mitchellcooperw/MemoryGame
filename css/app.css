@@ -138,14 +138,29 @@ h1 {
     top: 50%;
     left: 50%;
     margin:-150px 0 0 -150px;
+    padding-bottom: 10px;
  }
 
  .modal .stats {
     width: 100%;
-    align-content: center;
+    text-align: center;
+    padding-bottom: 15px;
+ }
+
+ .modal .stats h1 {
+    margin-bottom: 5px;
+}
+
+ .modal .stats p {
+     margin: 0;
  }
 
  .modal .options {
-     width: 50%;
+    width: 50%;
+    text-align: center;
+ }
 
+ .modal .options button {
+     height: 30px;
+     width: 60px;
  }
