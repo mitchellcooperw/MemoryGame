@@ -77,6 +77,14 @@ restart.addEventListener('click', function(event) {
     statReset();
 });
 
+// listener for restart button on popup
+
+popupRestart.addEventListener('click', function(event) {
+    shuffleCards(deck);
+    killElapsedTimer();
+    statReset();
+});
+
 // resets stats
 
 function statReset() {
