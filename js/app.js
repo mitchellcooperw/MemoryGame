@@ -62,7 +62,7 @@ deck.addEventListener('click', function(event) {
 restart.addEventListener('click', function(event) {
     shuffleCards(deck);
     killElapsedTimer();
-    statReset();
+    statReset(timer,moves);
 });
 
 // listener for restart button on popup
@@ -70,7 +70,7 @@ restart.addEventListener('click', function(event) {
 popupRestart.addEventListener('click', function(event) {
     shuffleCards(deck);
     killElapsedTimer();
-    statReset();
+    statReset(statTime,statMoves);
     toggleModal('none');
 });
 
@@ -100,10 +100,10 @@ function shuffle(array) {
 
 // resets stats
 
-function statReset() {
-    timer.innerHTML = '00:00';
+function statReset(timerDisplay,moveDisplay) {
+    timerDisplay.innerHTML = '00:00';
     totalMoves = 0;
-    moves.innerHTML = totalMoves;
+    moveDisplay.innerHTML = totalMoves;
 };
 
 // shuffles cards
