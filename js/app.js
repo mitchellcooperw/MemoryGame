@@ -10,12 +10,17 @@ const timer = document.querySelector('.timer');
 const popupRestart = document.querySelector('.popup-restart');
 const modal = document.querySelector('.modal');
 const popup = document.querySelector('.popup');
+const statTime = document.querySelector('.time');
+const statMoves = document.querySelector('.moves');
+const statStars = document.querySelector('.stars');
 
 let shownCardsHTML = [];
 let cardNodes = [];
 let totalMoves = 0;
 let totalMatches = 0;
 let interval;
+let min = 0 
+let sec = 0;
 
 // ------------------LISTENERS-----------------------
 
@@ -190,24 +195,29 @@ function compareCards(compareArray,eventArray) {
 
 // timer to track elapsed play time
 function elapsedTimer() { 
-    let min = 0 
-    let sec = 0;
 
     interval = setInterval(function(){
         sec++;
+
         if(sec === 60) {
             min++;
             sec = 0;
         };
 
-        if(sec < 10 ) {
-            timer.innerHTML = `${min}:0${sec}`;
-        } else {
-            timer.innerHTML = `${min}:${sec}`;
-        };
+        timerDisplay(timer);
     },1000);
 
 };
+
+// update timer display
+function timerDisplay(element) {
+    if(sec < 10 ) {
+        element.innerHTML = `${min}:0${sec}`;
+    } else {
+        element.innerHTML = `${min}:${sec}`;
+    };
+}
+
 // kills timer
 function killElapsedTimer() {
     clearInterval(interval);
