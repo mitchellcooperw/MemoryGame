@@ -49,12 +49,12 @@ deck.addEventListener('click', function(event) {
         };
     };
 
-    if(totalMatches === 2){
+    if(totalMatches === 8){
         const scores = document.querySelector('.scores');
         const clonedStars = document.querySelector('.stars').cloneNode(true);
+
         killElapsedTimer();
         timerDisplay(statTime);
-        
         scores.appendChild(clonedStars);
         statMoves.innerHTML = totalMoves;
 
@@ -65,7 +65,6 @@ deck.addEventListener('click', function(event) {
 
 // listener to reset the game
 restart.addEventListener('click', function(event) {
-
     shuffleCards(deck);
     killElapsedTimer();
     statReset(timer,moves);
@@ -204,7 +203,6 @@ function compareCards(compareArray,eventArray) {
 
 // timer to track elapsed play time
 function elapsedTimer() { 
-
     interval = setInterval(function(){
         sec++;
 
