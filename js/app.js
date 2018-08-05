@@ -27,8 +27,8 @@ let sec = 0;
 deck.addEventListener('click', function(event) {
     const clicked = event.target;
 
-    if (totalMoves >= 9 && totalMoves % 2 !== 0) {
-        updateScore(1);
+    if (totalMoves >= 7 && totalMoves % 2 === 0) {
+        updateScore();
     };
 
 // add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
@@ -120,7 +120,7 @@ function shuffleCards() {
 
         deck.appendChild(element);
     });
-    updateScore(totalMoves);
+    updateScore();
 };
 
 // toggles classes when a card is clicked
@@ -165,7 +165,7 @@ function updateMoveCounter(array) {
 };
 
 // updates star score
-function updateScore(moves) {
+function updateScore() {
     let score = document.querySelector('.stars');
 
     if(!totalMoves == 0) {
