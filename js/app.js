@@ -50,8 +50,12 @@ deck.addEventListener('click', function(event) {
     };
 
     if(totalMatches === 2){
+        const scores = document.querySelector('.scores');
+        const clonedStars = document.querySelector('.stars').cloneNode(true);
         killElapsedTimer();
         timerDisplay(statTime);
+        
+        scores.appendChild(clonedStars);
         statMoves.innerHTML = totalMoves;
 
         // if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
@@ -61,6 +65,7 @@ deck.addEventListener('click', function(event) {
 
 // listener to reset the game
 restart.addEventListener('click', function(event) {
+
     shuffleCards(deck);
     killElapsedTimer();
     statReset(timer,moves);
@@ -69,9 +74,13 @@ restart.addEventListener('click', function(event) {
 // listener for restart button on popup
 
 popupRestart.addEventListener('click', function(event) {
+    const scores = document.querySelector('.scores');
+    const stars = scores.querySelector('.stars');
+
     shuffleCards(deck);
     killElapsedTimer();
     statReset(timer,moves);
+    scores.removeChild(stars);
     toggleModal('none');
 });
 
