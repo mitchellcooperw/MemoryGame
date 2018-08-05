@@ -10,9 +10,8 @@ const timer = document.querySelector('.timer');
 const popupRestart = document.querySelector('.popup-restart');
 const modal = document.querySelector('.modal');
 const popup = document.querySelector('.popup');
-const statTime = document.querySelector('.time');
-const statMoves = document.querySelector('.moves');
-const statStars = document.querySelector('.stars');
+const statTime = document.querySelector('.statTime');
+const statMoves = document.querySelector('.statMoves');
 
 let shownCardsHTML = [];
 let cardNodes = [];
@@ -52,6 +51,8 @@ deck.addEventListener('click', function(event) {
 
     if(totalMatches === 2){
         killElapsedTimer();
+        timerDisplay(statTime);
+        statMoves.innerHTML = totalMoves;
 
         // if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
         toggleModal('flex');
@@ -70,7 +71,7 @@ restart.addEventListener('click', function(event) {
 popupRestart.addEventListener('click', function(event) {
     shuffleCards(deck);
     killElapsedTimer();
-    statReset(statTime,statMoves);
+    statReset(timer,moves);
     toggleModal('none');
 });
 
@@ -100,10 +101,10 @@ function shuffle(array) {
 
 // resets stats
 
-function statReset(timerDisplay,moveDisplay) {
-    timerDisplay.innerHTML = '00:00';
+function statReset() {
+    timer.innerHTML = '00:00';
     totalMoves = 0;
-    moveDisplay.innerHTML = totalMoves;
+    moves.innerHTML = totalMoves;
 };
 
 // shuffles cards
