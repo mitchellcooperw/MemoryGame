@@ -108,15 +108,20 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     };
+
     return array;
 }
 
 // resets stats
+
 function statReset() {
     timer.innerHTML = '00:00';
     totalMoves = 0;
     totalMatches = 0;
     moves.innerHTML = totalMoves;
+    toggleClicked(cardNodes[0]);
+    cardNodes = [];
+    shownCardsHTML = [];
 };
 
 // shuffles cards
@@ -129,12 +134,10 @@ function shuffleCards() {
         if(element.classList.contains('match')) {
             element.className = 'card';
         };
+
         deck.appendChild(element);
     });
     updateScore();
-    toggleClicked(cardNodes[0]);
-    cardNodes = [];
-    shownCardsHTML = [];
 };
 
 // toggles classes when a card is clicked
@@ -212,7 +215,6 @@ function elapsedTimer() {
             min++;
             sec = 0;
         };
-
         timerDisplay(timer);
     },1000);
 };
@@ -232,6 +234,7 @@ function killElapsedTimer() {
 };
 
 // toggles modal/popup
+
 function toggleModal(displayString) {
     modal.style.display = displayString;
     popup.style.display = displayString;
