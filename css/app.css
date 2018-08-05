@@ -154,6 +154,10 @@ h1 {
     margin-right: 10px;
 }
 
+.modal .header .close:hover, .close:focus {
+    cursor: pointer;
+}
+
  .modal .labels {
     width: 50%;
     text-align: right;

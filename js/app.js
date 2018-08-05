@@ -12,6 +12,7 @@ const modal = document.querySelector('.modal');
 const popup = document.querySelector('.popup');
 const statTime = document.querySelector('.statTime');
 const statMoves = document.querySelector('.statMoves');
+const closePopup = document.querySelector('.close');
 
 let shownCardsHTML = [];
 let cardNodes = [];
@@ -80,6 +81,10 @@ popupRestart.addEventListener('click', function(event) {
     killElapsedTimer();
     statReset(timer,moves);
     scores.removeChild(stars);
+    toggleModal('none');
+});
+
+closePopup.addEventListener('click', function(event) {
     toggleModal('none');
 });
 
