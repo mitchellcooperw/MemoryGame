@@ -14,27 +14,28 @@
 <body>
 
     <div class="container">
-        <header>
-            <h1>Matching Game</h1>
-        </header>
+        <header class="header">
+            <div class="title">
+                <h1>Matching Game</h1>
+            </div>
 
-        <section class="score-panel">
-        	<ul class="stars">
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-        	</ul>
+            <div class="score-panel">
+                <ul class="stars">
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                </ul>
 
-        	Moves: <span class="moves">0</span>
+                Moves: <span class="moves">0</span>
+                | Elapsed Time: <span class="timer">00:00</span>
+            </div>
 
             <div class="restart">
-        		<i class="fa fa-repeat"></i>
+                <i class="fa fa-repeat"></i>
             </div>
-            
-            | Elapsed Time: <span class="timer">00:00</span>
-        </section>
+        </header>
 
         <ul class="deck">
             <li class="card 1">
@@ -90,7 +91,7 @@
 
     <div class="modal">
         <div class="popup">
-            <div class="header">
+            <div class="popup-header">
                 <span class="close">&times;</span>
                 
                 <h1>Congratulations!</h1>
