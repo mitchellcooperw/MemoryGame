@@ -135,6 +135,9 @@ function shuffleCards() {
         deck.appendChild(element);
     });
     updateScore();
+    toggleClicked(cardNodes[0]);
+    cardNodes = [];
+    shownCardsHTML = [];
 };
 
 // toggles classes when a card is clicked
@@ -201,7 +204,6 @@ function compareCards(compareArray,eventArray) {
         hideCards(eventArray)
     };
 
-    shownCardCount = 0;
     shownCardsHTML = [];
     cardNodes = [];
 };
