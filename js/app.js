@@ -104,6 +104,7 @@ function shuffle(array) {
 function statReset() {
     timer.innerHTML = '00:00';
     totalMoves = 0;
+    totalMatches = 0;
     moves.innerHTML = totalMoves;
 };
 
