@@ -7,6 +7,9 @@ const deck = document.querySelector('.deck');
 const moves = document.querySelector('.moves');
 const restart = document.querySelector('.restart');
 const timer = document.querySelector('.timer');
+const popupRestart = document.querySelector('.popup-restart');
+const modal = document.querySelector('.modal');
+const popup = document.querySelector('.popup');
 
 let shownCardsHTML = [];
 let cardNodes = [];
@@ -71,10 +74,16 @@ deck.addEventListener('click', function(event) {
 restart.addEventListener('click', function(event) {
     shuffleCards(deck);
     killElapsedTimer();
+    statReset();
+});
+
+// resets stats
+
+function statReset() {
     timer.innerHTML = '00:00';
     totalMoves = 0;
     moves.innerHTML = totalMoves;
-});
+};
 
 // shuffles cards
 function shuffleCards() {
