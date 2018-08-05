@@ -17,7 +17,6 @@ let totalMoves = 0;
 let totalMatches = 0;
 let interval;
 
- 
 // ------------------LISTENERS-----------------------
 
 // set up the event listener for a card. If a card is clicked:
@@ -46,8 +45,11 @@ deck.addEventListener('click', function(event) {
         };
     };
 
-    if(totalMatches === 8){
+    if(totalMatches === 2){
         killElapsedTimer();
+
+        modal.style.display = 'flex';
+        popup.style.display = 'flex';
     };
 });
 
@@ -64,6 +66,9 @@ popupRestart.addEventListener('click', function(event) {
     shuffleCards(deck);
     killElapsedTimer();
     statReset();
+    
+    modal.style.display = 'none';
+    popup.style.display = 'none';
 });
 
 // ------------------FUNCTIONS-----------------------
