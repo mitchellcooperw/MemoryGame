@@ -47,21 +47,23 @@ deck.addEventListener('click', function(event) {
             if(totalMoves === 1) {
                 elapsedTimer();
             };
+
+            if(totalMatches === 8){
+                const scores = document.querySelector('.scores');
+                const clonedStars = document.querySelector('.stars').cloneNode(true);
+        
+                killElapsedTimer();
+                timerDisplay(statTime);
+                scores.appendChild(clonedStars);
+                statMoves.innerHTML = totalMoves;
+        
+                // if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
+                toggleModal('flex');
+            };
         };
     };
 
-    if(totalMatches === 8){
-        const scores = document.querySelector('.scores');
-        const clonedStars = document.querySelector('.stars').cloneNode(true);
-
-        killElapsedTimer();
-        timerDisplay(statTime);
-        scores.appendChild(clonedStars);
-        statMoves.innerHTML = totalMoves;
-
-        // if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
-        toggleModal('flex');
-    };
+    
 });
 
 // listener to reset the game
@@ -193,8 +195,7 @@ function updateScore() {
 
 // if the list already has another card, check to see if the two cards match
 function compareCards(compareArray,eventArray) {
-
-    if(shownCardsHTML[0] === shownCardsHTML[1]) {
+    if(shownCardsHTML[0] === shownCardsHTML[1] && cardNodes[0].classList[1] !== cardNodes[1].classList[1]) {
         matchCards(eventArray);
     } else {
         hideCards(eventArray)
