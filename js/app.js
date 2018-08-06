@@ -119,8 +119,12 @@ function statReset() {
     totalMoves = 0;
     totalMatches = 0;
     moves.innerHTML = totalMoves;
-    cardNodes = [];
-    shownCardsHTML = [];
+
+    if(cardNodes.length > 0) {
+        toggleClicked(cardNodes[0]);
+        cardNodes = [];
+        shownCardsHTML = [];
+    };
 };
 
 // shuffles cards
