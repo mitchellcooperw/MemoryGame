@@ -108,12 +108,10 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     };
-
     return array;
-}
+};
 
 // resets stats
-
 function statReset() {
     timer.innerHTML = '00:00';
     totalMoves = 0;
@@ -234,7 +232,6 @@ function killElapsedTimer() {
 };
 
 // toggles modal/popup
-
 function toggleModal(displayString) {
     modal.style.display = displayString;
     popup.style.display = displayString;
