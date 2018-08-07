@@ -60,9 +60,6 @@ deck.addEventListener('click', function(event) {
             };
         };
     };
-console.log(totalMatches, totalMoves);
-console.log(cardNodes);
-console.log(shownCardsHTML[0],shownCardsHTML[1]);
 });
 
 // listener to reset the game
@@ -125,6 +122,8 @@ function statReset() {
     totalMoves = 0;
     totalMatches = 0;
     moves.innerHTML = totalMoves;
+    min = 0;
+    sec = 0;
 
     if(cardNodes.length > 0) {
         toggleClicked(cardNodes[0]);
