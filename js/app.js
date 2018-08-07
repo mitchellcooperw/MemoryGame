@@ -33,8 +33,9 @@ deck.addEventListener('click', function(event) {
     };
 
 // add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
-    shownCardsHTML.push(clicked.innerHTML);
-    cardNodes.push(clicked);
+    if(!clicked.classList.contains('deck')) {
+        addCard(clicked);
+    }
 
 // display the card's symbol (put this functionality in another function that you call from this one)
     if(clicked.classList.contains('card') && cardNodes.length <= 2 && !clicked.classList.contains('match')) {
@@ -62,8 +63,9 @@ deck.addEventListener('click', function(event) {
             };
         };
     };
-
-    
+console.log(totalMatches, totalMoves);
+console.log(cardNodes);
+console.log(shownCardsHTML[0],shownCardsHTML[1]);
 });
 
 // listener to reset the game
@@ -112,6 +114,13 @@ function shuffle(array) {
     };
     return array;
 };
+
+// add card to array for comparison
+
+function addCard(eventTarget) {
+    shownCardsHTML.push(eventTarget.innerHTML);
+    cardNodes.push(eventTarget);
+}
 
 // resets stats
 function statReset() {
