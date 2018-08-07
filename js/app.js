@@ -33,13 +33,10 @@ deck.addEventListener('click', function(event) {
     };
 
 // add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
-    if(!clicked.classList.contains('deck')) {
-        addCard(clicked);
-    }
-
-// display the card's symbol (put this functionality in another function that you call from this one)
-    if(clicked.classList.contains('card') && cardNodes.length <= 2 && !clicked.classList.contains('match')) {
+    if(clicked.classList.contains('card') && cardNodes.length <= 2 && !clicked.classList.contains('match') && !clicked.classList.contains('open')) {
         toggleClicked(clicked);
+        shownCardsHTML.push(clicked.innerHTML);
+        cardNodes.push(clicked);
 
         if(cardNodes.length === 2) {
             updateMoveCounter(cardNodes);
@@ -152,6 +149,7 @@ function shuffleCards() {
     updateScore();
 };
 
+// display the card's symbol (put this functionality in another function that you call from this one)
 // toggles classes when a card is clicked
 function toggleClicked(event) {
     event.classList.toggle('show');
