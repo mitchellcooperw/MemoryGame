@@ -13,6 +13,7 @@ const popup = document.querySelector('.popup');
 const statTime = document.querySelector('.statTime');
 const statMoves = document.querySelector('.statMoves');
 const closePopup = document.querySelector('.close');
+let score = document.querySelector('.stars');
 
 let shownCardsHTML = [];
 let cardNodes = [];
@@ -28,10 +29,6 @@ let sec = 0;
 deck.addEventListener('click', function(event) {
     const clicked = event.target;
 
-    if (totalMoves >= 7 && totalMoves % 2 === 0) {
-        updateScore();
-    };
-
 // add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
     if(clicked.classList.contains('card') && cardNodes.length <= 2 && !clicked.classList.contains('match') && !clicked.classList.contains('open')) {
         toggleClicked(clicked);
@@ -40,6 +37,7 @@ deck.addEventListener('click', function(event) {
 
         if(cardNodes.length === 2) {
             updateMoveCounter(cardNodes);
+            removeStar();
             compareCards(shownCardsHTML,cardNodes);
 
             if(totalMoves === 1) {
@@ -109,12 +107,20 @@ function shuffle(array) {
     return array;
 };
 
-// add card to array for comparison
+// remove stars from total score
+function removeStar() {
+    let starCount = score.childElementCount;
 
+    if(totalMoves >= 9 && (totalMoves) % 3 === 0 && starCount >= 2) {
+        score.removeChild(score.firstElementChild);
+    };
+};
+
+// add card to array for comparison
 function addCard(eventTarget) {
     shownCardsHTML.push(eventTarget.innerHTML);
     cardNodes.push(eventTarget);
-}
+};
 
 // resets stats
 function statReset() {
@@ -145,7 +151,6 @@ function shuffleCards() {
 
         deck.appendChild(element);
     });
-    updateScore();
 };
 
 // display the card's symbol (put this functionality in another function that you call from this one)
@@ -190,17 +195,14 @@ function updateMoveCounter(array) {
 };
 
 // updates star score
-function updateScore() {
-    let score = document.querySelector('.stars');
+// function updateScore() {
 
-    if(!totalMoves == 0) {
-        score.removeChild(score.childNodes[0]);
-    } else {
-        for(var i = totalMoves; i < 5; i++){
-            score.appendChild(score.childNodes[0]);
-        };
-    };
-};
+//      else {
+//         for(var i = totalMoves; i < 5; i++){
+//             score.appendChild(score.childNodes[0]);
+//         };
+//     };
+// };
 
 // if the list already has another card, check to see if the two cards match
 function compareCards(compareArray,eventArray) {
