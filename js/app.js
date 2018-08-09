@@ -13,7 +13,8 @@ const popup = document.querySelector('.popup');
 const statTime = document.querySelector('.statTime');
 const statMoves = document.querySelector('.statMoves');
 const closePopup = document.querySelector('.close');
-let score = document.querySelector('.stars');
+const score = document.querySelector('.stars');
+let fragment = document.createDocumentFragment();
 
 let shownCardsHTML = [];
 let cardNodes = [];
@@ -116,6 +117,19 @@ function removeStar() {
     };
 };
 
+// resets star score display on new game
+function resetStars() {
+    const loops = score.childElementCount;
+
+    for(var i = loops; i < 5; i++) {
+        var star = document.createElement("li");
+        star.innerHTML = '<i class="fa fa-star"></i>';
+        fragment.appendChild(star);
+    };
+
+    score.appendChild(fragment);
+};
+
 // add card to array for comparison
 function addCard(eventTarget) {
     shownCardsHTML.push(eventTarget.innerHTML);
@@ -124,6 +138,7 @@ function addCard(eventTarget) {
 
 // resets stats
 function statReset() {
+    resetStars();
     timer.innerHTML = '00:00';
     totalMoves = 0;
     totalMatches = 0;
@@ -193,16 +208,6 @@ function updateMoveCounter(array) {
         moves.innerHTML = totalMoves;
     };
 };
-
-// updates star score
-// function updateScore() {
-
-//      else {
-//         for(var i = totalMoves; i < 5; i++){
-//             score.appendChild(score.childNodes[0]);
-//         };
-//     };
-// };
 
 // if the list already has another card, check to see if the two cards match
 function compareCards(compareArray,eventArray) {
