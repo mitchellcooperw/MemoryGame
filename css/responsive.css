@@ -1,4 +1,12 @@
 @media screen and (max-width: 400px) {
+    .title {
+        font-size: 1.3em;
+    }
+
+    .title h1 {
+        margin: 0;
+    }
+    
     .score-container {
         width: 100%;
         display: flex;
@@ -6,6 +14,16 @@
         flex-direction: column;
         justify-content: center;
         align-content: center;
+    }
+
+    .score-panel {
+        font-size: 1.75em;
+        padding: 0 30px;
+    }
+
+    .score-panel .stars {
+        font-size: 1.5em;
+        padding-left: 0;
     }
     
     .flex1 {
