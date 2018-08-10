@@ -18,3 +18,9 @@ For specific, detailed instructions, look at the project instructions in the [Ud
 This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+
+##Gameplay
+
+This is a simple matching game. Click on tiles to match pairs until all pairs are matched. Star score is tracked along with the total number of moves and the time used to complete the game. Try and beat your high score! Click on the circular arrow next to your stats to start over. 
+
+#Good luck!
