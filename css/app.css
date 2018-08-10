@@ -49,16 +49,19 @@ body {
  * Styles for the Score Panel
  */
 
+.score-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
  .score-panel {
-    text-align: right;
-    width: 66%;
+    text-align: center;
     margin-bottom: 10px;
-    padding-right: 10px;
 }
 
 .score-panel .stars {
     margin: 0;
-    /* padding-right: 10px; */
     display: inline-block;
     margin: 0 5px 0 0;
 }
@@ -69,7 +72,7 @@ body {
 }
 
 .restart {
-    width: 33%;
+    padding-left: 1%;
     cursor: pointer;
 }
 
@@ -77,12 +80,16 @@ body {
     float: center;
 }
 
+.flex {
+    width: 33.33%;
+}
+
 /*
  * Styles for the deck of cards
  */
 
 .deck {
-    width: 66%;
+    width: 40%;
     min-height: 680px;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     padding: 32px;
