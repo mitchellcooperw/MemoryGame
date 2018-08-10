@@ -26,6 +26,12 @@ let sec = 0;
 
 // ------------------LISTENERS-----------------------
 
+//shuffle cards on page load
+
+document.addEventListener('DOMContentLoaded', function() {
+    shuffleCards(deck);
+});
+
 // set up the event listener for a card. If a card is clicked:
 deck.addEventListener('click', function(event) {
     const clicked = event.target;
