@@ -1,4 +1,4 @@
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
     .title {
         font-size: 1.3em;
     }
@@ -17,20 +17,28 @@
     }
 
     .score-panel {
-        font-size: 1.75em;
+        font-size: 1.8em;
         padding: 0 30px;
     }
 
     .score-panel .stars {
-        font-size: 1.5em;
+        font-size: 1.7em;
+        padding-left: 0;
+    }
+
+    .restart {
         padding-left: 0;
     }
     
     .flex1 {
-        width: 100%;
+        width: 0;
     }
     
     .flex2 {
+        width: 100%;
+    }
+
+    .flex3 {
         width: 100%;
     }
 
@@ -48,5 +56,113 @@
     .deck .card {
          height: 70px;
          width: 70px;
+    }
+}
+
+@media screen and (min-width: 451px) and (max-width: 650px) {
+    .deck {
+        width: 400px;
+        min-height: 500px;
+        padding: 8px;
+    }
+
+    .deck .card {
+         height: 90px;
+         width: 90px;
+    }
+
+    .score-panel {
+        font-size: 1.5em;
+        padding: 0;
+    }
+
+    .score-panel .stars {
+        font-size: 1.2em;
+    }
+    
+    .flex1 {
+        width: 5%;
+    }
+    
+    .flex2 {
+        width: 75%;
+    }
+
+    .flex3 {
+        width: 20%;
+    }
+
+    .restart {
+        text-align: center;
+        font-size: 1.8em;
+        padding-left: 1.75%;
+        text-align: left;
+    }
+}
+
+@media screen and (min-width: 651px) and (max-width: 900px) {
+    .title {
+        font-size: 1.3em;
+    }
+
+    .title h1 {
+        margin: 0;
+    }
+    
+    .score-container {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .score-panel {
+        font-size: 1.5em;
+        padding: 0;
+    }
+
+    .score-panel .stars {
+        font-size: 1.2em;
+    }
+    
+    .flex1 {
+        width: 5%;
+    }
+    
+    .flex2 {
+        width: 75%;
+    }
+
+    .flex3 {
+        width: 20%;
+    }
+
+    .restart {
+        text-align: center;
+        font-size: 1.8em;
+        padding-left: 1.75%;
+        text-align: left;
+    }
+
+}
+
+@media screen and (min-width: 901px) and (max-width: 1350px) {
+    .flex1 {
+        width: 33%;
+    }
+    
+    .flex2 {
+        width: 34%;
+    }
+
+    .flex3 {
+        width: 33%;
+    }
+
+    .score-panel {
+        padding-right: 0;
+    }
+
+    .restart {
+        padding-left: 3%;
     }
 }

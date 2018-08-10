@@ -56,11 +56,15 @@ body {
 }
 
 .flex1 {
-    width: 30%;
+    width: 35%;
 }
 
 .flex2 {
-    width: 40%;
+    width: 30%;
+}
+
+.flex3 {
+    width: 35%;
 }
 
  .score-panel {
@@ -80,7 +84,6 @@ body {
 }
 
 .restart {
-    padding-left: 5%;
     cursor: pointer;
 }
 
